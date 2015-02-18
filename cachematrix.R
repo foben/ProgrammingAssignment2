@@ -5,11 +5,26 @@
 
 ## Create a new cachable matrix from a standard matrix
 makeCacheMatrix <- function(x = matrix()) {
-
+  inv_matrix <- NULL
+  set <- function(y) {
+    x <<- y
+    inv_matrix <<- NULL
+  }
+  get <- function() x
+  setInverse <- function(inv) inv_matrix <<- inv
+  getInverse <- function() inv_matrix
+  list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
 ## Calculate the inverse of the supplied matrix,
 ## returning a cached value if possible
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  inv <- x$getInverse()
+  if ( !is.null(inv) ) {
+    message("Returning cached data")
+  } else {
+    inv <- solve(x$get())
+    x$setInverse(inv)
+  }
+  inv
 }
