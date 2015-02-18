@@ -8,6 +8,8 @@ makeCacheMatrix <- function(x = matrix()) {
   inv_matrix <- NULL
   set <- function(y) {
     x <<- y
+    ## If the internal matrix is changed via set,
+    ## the cached value is probably incorrect.
     inv_matrix <<- NULL
   }
   get <- function() x
@@ -26,5 +28,6 @@ cacheSolve <- function(x, ...) {
     inv <- solve(x$get())
     x$setInverse(inv)
   }
+  ## At this point, "inv" contains the correct cached matrix.
   inv
 }
