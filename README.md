@@ -1,3 +1,6 @@
+### Thanks!
+Thank you for evaluating my submission! :)
+
 ### Introduction
 
 This second programming assignment will require you to write an R
