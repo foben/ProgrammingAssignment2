@@ -9,7 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
     set <- function(y) {
         x <<- y
         ## If the internal matrix is changed via set,
-        ## the cached value is probably incorrect.
+        ## the cached value is probably incorrect, so it is set to null.
         inv_matrix <<- NULL
     }
     get <- function() x
